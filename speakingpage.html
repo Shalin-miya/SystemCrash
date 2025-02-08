@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Pitch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("https://st4.depositphotos.com/1037473/21646/i/450/depositphotos_216468390-stock-photo-speaker-giving-talk-corporate-business.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            color: antiquewhite;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: antiquewhite;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: #f4a261;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f4a261;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d3748;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .user-name {
+            color: antiquewhite;
+            font-size: 1.1rem;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 100px);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .heading {
+            font-size: 4.5rem;
+            color: antiquewhite;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .speak-button {
+            font-size: 2rem;
+            font-style: italic;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: antiquewhite;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid antiquewhite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .speak-button:hover {
+            background-color: rgba(250, 235, 215, 0.1);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .profile-section {
+                margin-top: 20px;
+            }
+
+            .heading {
+                font-size: 3rem;
+            }
+
+            .speak-button {
+                width: 150px;
+                height: 150px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <header>
+        <div class="logo">Power Pitch</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+            <div class="profile-section">
+                <div class="profile-pic">US</div>
+                <span class="user-name">User</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="heading">Hey User!</h1>
+        <button class="speak-button">SPEAK</button>
+    </main>
+
+    <script>
+        // Simulating a signed-in user
+        const user = {
+            name: "John Doe",
+            initials: "JD"
+        };
+
+        // Update user information
+        document.querySelector('.heading').textContent = Hey ${user.name.split(' ')[0]}!;
+        document.querySelector('.profile-pic').textContent = user.initials;
+        document.querySelector('.user-name').textContent = user.name;
+    </script>
+</body>
+</html>
