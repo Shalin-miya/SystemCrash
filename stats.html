@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-image: url('https://st4.depositphotos.com/1037473/21646/i/450/depositphotos_216468390-stock-photo-speaker-giving-talk-corporate-business.jpg');
+      background-size: cover;
+      color: rgb(254, 243, 199);
+    }
+
+    .main-header {
+      
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .main-header h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .header-line {
+      width: 6rem;
+      height: 0.25rem;
+      background-color: rgb(146, 64, 14);
+      margin: 1rem auto;
+    }
+
+    .sub-header {
+      background-color: rgb(38, 38, 38);
+      border-top: 1px solid rgb(120, 53, 15);
+      padding: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .sub-header-content {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .student-info {
+      text-align: right;
+    }
+
+    .main-content {
+      max-width: 80rem;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: rgb(38, 38, 38);
+      border: 1px solid rgb(120, 53, 15);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: box-shadow 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .stat-value {
+      font-size: 1.875rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(254, 243, 199, 0.7);
+    }
+
+    .improvement {
+      color: rgb(217, 119, 6);
+    }
+
+    .chart-container {
+      height: 400px;
+      background-color: rgb(38, 38, 38);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .chart {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      padding-top: 2rem;
+    }
+
+    .bar {
+      flex: 1;
+      background-color: rgb(146, 64, 14);
+      border-radius: 4px 4px 0 0;
+      transition: opacity 0.3s;
+      position: relative;
+    }
+
+    .bar:hover {
+      opacity: 0.8;
+    }
+
+    .bar::before {
+      content: attr(data-value);
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+    }
+
+    .bar::after {
+      content: attr(data-date);
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <h1>Speech Analytics Dashboard</h1>
+    <div class="header-line"></div>
+    <p>Monitoring and Improving Speech Performance</p>
+  </header>
+
+  <div class="sub-header">
+    <div class="sub-header-content">
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: bold;">Performance Overview</h2>
+        <p style="color: rgba(254, 243, 199, 0.7)">Track your progress and improve your speaking skills</p>
+      </div>
+      <div class="student-info">
+        <p style="color: rgba(254, 243, 199, 0.7)">Student Name</p>
+        <p style="font-size: 1.125rem; font-weight: 600;">Sarah Johnson</p>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="stats-column">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Today's Sessions</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(217, 119, 6)" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="stat-value">5</div>
+        <div class="stat-label">sessions completed</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Average Score</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(217, 119, 6)" stroke-width="2">
+            <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
+            <path d="M17 6h6v6"></path>
+          </svg>
+        </div>
+        <div class="stat-value">91</div>
+        <div class="improvement">+12% from last week</div>
+      </div>
+    </div>
+
+    <div class="chart-card card">
+      <div class="card-header">
+        <h3 class="card-title">Performance Trend</h3>
+        <p style="color: rgba(254, 243, 199, 0.7)">Daily average scores</p>
+      </div>
+      <div class="chart-container">
+        <div class="chart">
+          <div class="bar" style="height: 85%" data-value="85" data-date="Mon"></div>
+          <div class="bar" style="height: 78%" data-value="78" data-date="Tue"></div>
+          <div class="bar" style="height: 92%" data-value="92" data-date="Wed"></div>
+          <div class="bar" style="height: 88%" data-value="88" data-date="Thu"></div>
+          <div class="bar" style="height: 95%" data-value="95" data-date="Fri"></div>
+          <div class="bar" style="height: 89%" data-value="89" data-date="Sat"></div>
+          <div class="bar" style="height: 91%" data-value="91" data-date="Sun"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Get current user
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+        window.location.href = 'signin.html';
+    }
+
+    // Update user info
+    document.querySelector('.student-info p:last-child').textContent = currentUser.username;
+
+    // Get speech sessions
+    const sessions = JSON.parse(localStorage.getItem('speechSessions') || '[]')
+        .filter(session => session.username === currentUser.username);
+
+    // Calculate today's sessions
+    const today = new Date().toDateString();
+    const todaySessions = sessions.filter(session => 
+        new Date(session.date).toDateString() === today
+    );
+    document.querySelector('.stats-column .card:first-child .stat-value')
+        .textContent = todaySessions.length;
+
+    // Calculate average score
+    const averageScore = sessions.length ? 
+        Math.round(sessions.reduce((acc, session) => acc + session.score, 0) / sessions.length) : 0;
+    document.querySelector('.stats-column .card:nth-child(2) .stat-value')
+        .textContent = averageScore;
+
+    // Calculate weekly improvement
+    const lastWeekSessions = sessions.filter(session => {
+        const sessionDate = new Date(session.date);
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        return sessionDate >= weekAgo;
+    });
+
+    const previousWeekSessions = sessions.filter(session => {
+        const sessionDate = new Date(session.date);
+        const twoWeeksAgo = new Date();
+        const weekAgo = new Date();
+        twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        return sessionDate >= twoWeeksAgo && sessionDate < weekAgo;
+    });
+
+    const thisWeekAvg = lastWeekSessions.length ?
+        Math.round(lastWeekSessions.reduce((acc, session) => acc + session.score, 0) / lastWeekSessions.length) : 0;
+    const lastWeekAvg = previousWeekSessions.length ?
+        Math.round(previousWeekSessions.reduce((acc, session) => acc + session.score, 0) / previousWeekSessions.length) : 0;
+
+    const improvement = lastWeekAvg ? Math.round(((thisWeekAvg - lastWeekAvg) / lastWeekAvg) * 100) : 0;
+    document.querySelector('.improvement').textContent = 
+        `${improvement >= 0 ? '+' : ''}${improvement}% from last week`;
+
+    // Update performance trend chart
+    const last7Days = Array.from({length: 7}, (_, i) => {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        return date.toDateString();
+    }).reverse();
+
+    const dailyAverages = last7Days.map(day => {
+        const daySessions = sessions.filter(session => 
+            new Date(session.date).toDateString() === day
+        );
+        return daySessions.length ?
+            Math.round(daySessions.reduce((acc, session) => acc + session.score, 0) / daySessions.length) : 0;
+    });
+
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const bars = document.querySelectorAll('.bar');
+    bars.forEach((bar, i) => {
+        const score = dailyAverages[i];
+        bar.style.height = `${score}%`;
+        bar.setAttribute('data-value', score);
+        bar.setAttribute('data-date', days[new Date(last7Days[i]).getDay()]);
+    });
+</script>
+
+</body>
+</html>
