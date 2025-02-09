@@ -1,0 +1,1500 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Pitch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2a9d8f;
+            --secondary-color: #e9c46a;
+            --text-light: #f8f9fa;
+            --text-dark: #2d3748;
+            --error-color: #e63946;
+            --success-color: #2a9d8f;
+            --warning-color: #e9c46a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #264653;
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(120deg, rgba(42, 157, 143, 0.1) 0%, rgba(233, 196, 106, 0.1) 100%),
+                linear-gradient(45deg, #264653 25%, transparent 25%),
+                linear-gradient(-45deg, #264653 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #264653 75%),
+                linear-gradient(-45deg, transparent 75%, #264653 75%);
+            background-size: 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
+            background-position: 0 0, 10px 0, 0 10px, 10px -10px, 0 0;
+            z-index: -1;
+        }
+
+        header {
+            padding: 1.5rem 3rem;
+            background-color: rgba(38, 70, 83, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #f4a261;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: rgba(233, 196, 106, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .profile-section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-section:hover {
+            background-color: rgba(233, 196, 106, 0.1);
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(38, 70, 83, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(233, 196, 106, 0.1);
+            color: var(--secondary-color);
+        }
+
+        main {
+            padding-top: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            text-align: center;
+            margin: 2rem 0;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .status-indicator {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .speak-button {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .speak-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .speak-button.recording {
+            background-color: var(--error-color);
+            animation: pulse 2s infinite;
+        }
+
+        .speech-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .speech-box {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .speech-box h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .speech-box p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .score {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 1rem;
+            color: var(--text-light);
+        }
+
+        .loading-indicator {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .loading-indicator span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin: 0 4px;
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        .loading-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-8px); }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .heading {
+                font-size: 2.5rem;
+            }
+
+            .speak-button {
+                width: 150px;
+                height: 150px;
+                font-size: 1.2rem;
+            }
+
+            .speech-container {
+                padding: 1rem;
+            }
+        }
+
+        .error-message {
+            color: var(--error-color);
+            background-color: rgba(230, 57, 70, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            background-color: rgba(42, 157, 143, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">Power Pitch</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="stats.html">Stats</a></li>
+
+                </ul>
+                <div class="profile-section">
+                    <div class="profile-pic">US</div>
+                    <span class="user-name">User</span>
+                    <div class="dropdown-menu">
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="heading">Welcome, User!</h1>
+        <div class="status-indicator">Click the button to start speaking</div>
+        
+        <button class="speak-button">SPEAK</button>
+
+        <div class="loading-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="error-message"></div>
+        <div class="success-message"></div>
+    
+        <div class="speech-container">
+            <div class="speech-box">
+                <h3>Your Speech</h3>
+                <div class="texts"></div>
+            </div>
+            <div class="speech-box">
+                <h3>Improved Version</h3>
+                <div class="resp"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // User authentication check
+        function checkAuth() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = 'signin.html';
+                return null;
+            }
+            return currentUser;
+        }
+
+        // Initialize user data
+        function initializeUser() {
+            const currentUser = checkAuth();
+            if (currentUser) {
+                document.querySelector('.heading').textContent = `Welcome, ${currentUser.username}!`;
+                document.querySelector('.profile-pic').textContent = currentUser.username.substring(0, 2).toUpperCase();
+                document.querySelector('.user-name').textContent = currentUser.username;
+            }
+        }
+
+        // UI Elements
+        const button = document.querySelector('.speak-button');
+        const texts = document.querySelector('.texts');
+        const resp = document.querySelector('.resp');
+        const status = document.querySelector('.status-indicator');
+        const speechContainer = document.querySelector('.speech-container');
+        const loadingIndicator = document.querySelector('.loading-indicator');
+        const errorMessage = document.querySelector('.error-message');
+        const successMessage = document.querySelector('.success-message');
+
+        // Profile dropdown functionality
+        const profileSection = document.querySelector('.profile-section');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        }
+
+        function hideDropdown() {
+            dropdownMenu.classList.remove('show');
+        }
+
+        profileSection.addEventListener('click', toggleDropdown);
+        document.addEventListener('click', hideDropdown);
+        dropdownMenu.addEventListener('click', e => e.stopPropagation());
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('speechSessions');
+            window.location.href = 'signin.html';
+        });
+
+        // Speech Recognition Setup
+        let recognition = null;
+        let isRecording = false;
+        let tempText = '';
+
+        function initializeSpeechRecognition() {
+            try {
+                window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new window.SpeechRecognition();
+                recognition.interimResults = true;
+                recognition.continuous = true;
+                recognition.lang = 'en-US';
+                
+                setupSpeechRecognitionHandlers();
+                return true;
+            } catch (error) {
+                showError('Speech recognition is not supported in your browser. Please try using Chrome.');
+                button.disabled = true;
+                return false;
+            }
+        }
+
+        function setupSpeechRecognitionHandlers() {
+            recognition.addEventListener('result', handleSpeechResult);
+            recognition.addEventListener('end', handleSpeechEnd);
+            recognition.addEventListener('error', handleSpeechError);
+        }
+
+        function handleSpeechResult(e) {
+            const text = Array.from(e.results)
+                .map(result => result[0])
+                .map(result => result.transcript)
+                .join(' ');
+            
+            tempText = text;
+            
+            if (texts.children.length > 0) {
+                texts.lastChild.innerText = tempText;
+            } else {
+                const p = document.createElement('p');
+                p.innerText = tempText;
+                texts.appendChild(p);
+            }
+        }
+
+        function handleSpeechEnd() {
+            if (isRecording) {
+                recognition.start();
+            } else if (tempText) {
+                improveText(tempText);
+            }
+        }
+
+        function handleSpeechError(event) {
+            if (event.error === 'no-speech') {
+                showError('No speech was detected. Please try again.');
+            } else if (event.error === 'audio-capture') {
+                showError('No microphone was found. Ensure that a microphone is installed.');
+            } else if (event.error === 'not-allowed') {
+                showError('Permission to use microphone was denied. Please allow microphone access.');
+            } else {
+                showError('Error occurred in recognition: ' + event.error);
+            }
+            stopRecording();
+        }
+
+        // UI Feedback Functions
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        function toggleLoadingState(isLoading) {
+            loadingIndicator.style.display = isLoading ? 'block' : 'none';
+            button.disabled = isLoading;
+        }
+
+        // Speech Processing Functions
+        async function improveText(text) {
+            if (!text.trim()) {
+                showError('No speech detected. Please try again.');
+                return;
+            }
+
+            status.innerText = 'Processing your speech...';
+            toggleLoadingState(true);
+            
+            try {
+                const apiKey = 'AIzaSyAJRyFJ6DWkWQkiwQzA4S9Dq8JjBmOLgVU';
+                const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey;
+        
+                const data = {
+                    contents: [{
+                        parts: [{
+                            text: `${text} Please provide me with an object where the keys are 1.response which contains 'How do I improve this text? just give me the final apt sentence without any other context' and 2. score a number from 1-10 based on the grammar of the sentence and be very critical on the marks.`
+                        }]
+                    }]
+                };
+        
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+
+                const result = await response.json();
+                
+                if (result?.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    const jsonStr = result.candidates[0].content.parts[0].text
+                        .replace('```json\n', '')
+                        .replace('\n```', '');
+                    
+                    const improvedData = JSON.parse(jsonStr);
+                    
+                    saveSessionData(text, improvedData);
+                    displayImprovedText(improvedData);
+                    showSuccess('Speech processed successfully!');
+                } else {
+                    throw new Error('Invalid API response format');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Failed to process speech. Please try again.');
+            } finally {
+                toggleLoadingState(false);
+                status.innerText = 'Ready for new recording';
+            }
+        }
+
+        function displayImprovedText(improvedData) {
+            resp.innerHTML = `
+                <p>${improvedData.response}</p>
+                <p>Grammar Score: <span class="score" style="background-color: ${getScoreColor(improvedData.score)}">${improvedData.score}/10</span></p>
+            `;
+        }
+        
+        function getScoreColor(score) {
+            if (score >= 8) return 'var(--success-color)';
+            if (score >= 6) return 'var(--warning-color)';
+            return 'var(--error-color)';
+        }
+    
+        function saveSessionData(text, improvedData) {
+            const currentUser = checkAuth();
+            if (!currentUser) return;
+
+            const sessions = JSON.parse(localStorage.getItem('speechSessions') || '[]');
+            
+            const sessionData = {
+                date: new Date().toISOString(),
+                originalText: text,
+                improvedText: improvedData.response,
+                score: improvedData.score,
+                username: currentUser.username
+            };
+            
+            sessions.push(sessionData);
+            localStorage.setItem('speechSessions', JSON.stringify(sessions));
+        }
+
+        // Recording Control Functions
+        function startRecording() {
+            isRecording = true;
+            texts.innerHTML = '';
+            resp.innerHTML = '';
+            tempText = '';
+            button.innerText = 'STOP';
+            button.classList.add('recording');
+            status.innerText = 'Listening...';
+            speechContainer.style.display = 'block';
+            
+            try {
+                recognition.start();
+            } catch (error) {
+                showError('Failed to start recording. Please try again.');
+                stopRecording();
+            }
+        }
+
+        function stopRecording() {
+            isRecording = false;
+            button.innerText = 'SPEAK';
+            button.classList.remove('recording');
+            
+            if (recognition) {
+                recognition.stop();
+            }
+        }
+
+        // Button Click Handler
+        button.addEventListener('click', () => {
+            if (!recognition && !initializeSpeechRecognition()) {
+                return;
+            }
+
+            if (isRecording) {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        });
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeUser();
+            initializeSpeechRecognition();
+        }); -->
+
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Pitch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2a9d8f;
+            --secondary-color: #e9c46a;
+            --text-light: #f8f9fa;
+            --text-dark: #2d3748;
+            --error-color: #e63946;
+            --success-color: #2a9d8f;
+            --warning-color: #e9c46a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #264653;
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(120deg, rgba(42, 157, 143, 0.1) 0%, rgba(233, 196, 106, 0.1) 100%),
+                linear-gradient(45deg, #264653 25%, transparent 25%),
+                linear-gradient(-45deg, #264653 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #264653 75%),
+                linear-gradient(-45deg, transparent 75%, #264653 75%);
+            background-size: 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
+            background-position: 0 0, 10px 0, 0 10px, 10px -10px, 0 0;
+            z-index: -1;
+        }
+
+        header {
+            padding: 1.5rem 3rem;
+            background-color: rgba(38, 70, 83, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #f4a261;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: rgba(233, 196, 106, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .profile-section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-section:hover {
+            background-color: rgba(233, 196, 106, 0.1);
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(38, 70, 83, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(233, 196, 106, 0.1);
+            color: var(--secondary-color);
+        }
+
+        main {
+            padding-top: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            text-align: center;
+            margin: 2rem 0;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .status-indicator {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .speak-button {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .speak-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .speak-button.recording {
+            background-color: var(--error-color);
+            animation: pulse 2s infinite;
+        }
+
+        .speak-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .speech-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .speech-box {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .speech-box h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .speech-box p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .score {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 1rem;
+            color: var(--text-light);
+        }
+
+        .loading-indicator {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .loading-indicator span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin: 0 4px;
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        .loading-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            background-color: rgba(230, 57, 70, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+            text-align: center;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            background-color: rgba(42, 157, 143, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+            text-align: center;
+        }
+
+        .browser-support {
+            background-color: var(--warning-color);
+            color: var(--text-dark);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem;
+            display: none;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-8px); }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .heading {
+                font-size: 2.5rem;
+            }
+
+            .speak-button {
+                width: 150px;
+                height: 150px;
+                font-size: 1.2rem;
+            }
+
+            .speech-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">Power Pitch</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="stats.html">Stats</a></li>
+                </ul>
+                <div class="profile-section">
+                    <div class="profile-pic">US</div>
+                    <span class="user-name">User</span>
+                    <div class="dropdown-menu">
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="heading">Welcome, User!</h1>
+        <div class="browser-support">Your browser may not support speech recognition. Please use Chrome for the best experience.</div>
+        <div class="status-indicator">Click the button to start speaking</div>
+        
+        <button class="speak-button">SPEAK</button>
+
+        <div class="loading-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="error-message"></div>
+        <div class="success-message"></div>
+    
+        <div class="speech-container">
+            <div class="speech-box">
+                <h3>Your Speech</h3>
+                <div class="texts"></div>
+            </div>
+            <div class="speech-box">
+                <h3>Improved Version</h3>
+                <div class="resp"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const button = document.querySelector('.speak-button');
+            const texts = document.querySelector('.texts');
+            const resp = document.querySelector('.resp');
+            const status = document.querySelector('.status-indicator');
+            const speechContainer = document.querySelector('.speech-container');
+            const loadingIndicator = document.querySelector('.loading-indicator');
+            const errorMessage = document.querySelector('.error-message');
+            const successMessage = document.querySelector('.success-message');
+            const browserSupport = document.querySelector('.browser-support');
+            const profileSection = document.querySelector('.profile-section');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            let recognition = null;
+            let isRecording = false;
+            let tempText = '';
+
+            // Check authentication
+            function checkAuth() {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                if (!currentUser) {
+                    window.location.href = 'signin.html';
+                    return null;
+                }
+                return currentUser;
+            }
+
+            // Initialize user data
+            function initializeUser() {
+                const currentUser = checkAuth();
+                if (currentUser) {
+                    document.querySelector('.heading').textContent = `Welcome, ${currentUser.username}!`;
+                    document.querySelector('.profile-pic').textContent = currentUser.username.substring(0, 2).toUpperCase();
+                    document.querySelector('.user-name').textContent = currentUser.username;
+                }
+            }
+
+            // Profile dropdown functionality
+            function toggleDropdown(event) {
+                event.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            }
+
+            function hideDropdown() {
+                dropdownMenu.classList.remove('show');
+            }
+
+            // Speech Recognition Setup
+            function initializeSpeechRecognition() {
+                if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                    browserSupport.style.display = 'block';
+                    button.disabled = true;
+                    return false;
+                }
+
+                try {
+                    recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                    recognition.interimResults = true;
+                    recognition.continuous = true;
+                    recognition.lang = 'en-US';
+
+                    setupSpeechRecognitionHandlers();
+                    return true;
+                } catch (error) {
+                    console.error('Speech recognition initialization error:', error);
+                    showError('Speech recognition is not supported in your browser. Please try using Chrome.');
+                    button.disabled = true;
+                    return false;
+                }
+            }
+
+            function setupSpeechRecognitionHandlers() {
+                recognition.onresult = handleSpeechResult;
+                recognition.onend = handleSpeechEnd;
+                recognition.onerror = handleSpeechError;
+            }
+
+            function handleSpeechResult(event) {
+                const text = Array.from(event.results)
+                    .map(result => result[0])
+                    .map(result => result.transcript)
+                    .join(' ');
+                
+                tempText = text;
+                
+                if (texts.children.length > 0) {
+                    texts.lastChild.innerText = tempText;
+                } else {
+                    const p = document.createElement('p');
+                    p.innerText = tempText;
+                    texts.appendChild(p);
+                }
+            }
+
+            function handleSpeechEnd() {
+                if (isRecording) {
+                    try {
+                        recognition.start();
+                    } catch (error) {
+                        console.error('Recognition restart error:', error);
+                        stopRecording();
+                    }
+                } else if (tempText) {
+                    improveText(tempText);
+                }
+            }
+
+            function handleSpeechError(event) {
+                console.error('Speech recognition error:', event.error);
+                if (event.error === 'no-speech') {
+                    showError('No speech was detected. Please try again.');
+                } else if (event.error === 'audio-capture') {
+                    showError('No microphone was found. Ensure that a microphone is installed.');
+                } else if (event.error === 'not-allowed') {
+                    showError('Permission to use microphone was denied. Please allow microphone access.');
+                } else {
+                    showError('Error occurred in recognition: ' + event.error);
+                }
+                stopRecording();
+            }
+
+            // Recording Control Functions
+            function startRecording() {
+                isRecording = true;
+                texts.innerHTML = '';
+                resp.innerHTML = '';
+                tempText = '';
+                button.innerText = 'STOP';
+                button.classList.add('recording');
+                status.innerText = 'Listening...';
+                speechContainer.style.display = 'block';
+                
+                try {
+                    recognition.start();
+                } catch (error) {
+                    console.error('Recognition start error:', error);
+                    showError('Failed to start recording. Please try again.');
+                    stopRecording();
+                }
+            }
+
+            function stopRecording() {
+                isRecording = false;
+                button.innerText = 'SPEAK';
+                button.classList.remove('recording');
+                
+                try {
+                    recognition.stop();
+                } catch (error) {
+                    console.error('Recognition stop error:', error);
+                }
+            }
+
+            // UI Feedback Functions
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+
+            function showSuccess(message) {
+                successMessage.textContent = message;
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+
+            function toggleLoadingState(isLoading) {
+                loadingIndicator.style.display = isLoading ? 'block' : 'none';
+                button.disabled = isLoading;
+            }
+
+            // API Integration
+            async function improveText(text) {
+                if (!text.trim()) {
+                    showError('No speech detected. Please try again.');
+                    return;
+                }
+
+                status.innerText = 'Processing your speech...';
+                toggleLoadingState(true);
+                
+                try {
+                    const apiKey = 'AIzaSyAJRyFJ6DWkWQkiwQzA4S9Dq8JjBmOLgVU'; // Replace with your actual API key
+                    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey;
+            
+                    const data = {
+                        contents: [{
+                            parts: [{
+                                text: `Analyze this text and return a JSON object: "${text}". The JSON should have two fields: 1) "response" containing an improved version of the text with better grammar and clarity, and 2) "score" containing a number from 1-10 rating the original text's grammar. Format the response as valid JSON without any markdown formatting or code blocks.`
+                            }]
+                        }]
+                    };
+            
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('API request failed');
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result?.candidates?.[0]?.content?.parts?.[0]?.text) {
+                        // Clean the response text
+                        let responseText = result.candidates[0].content.parts[0].text;
+                        
+                        // Remove any markdown code block markers if present
+                        responseText = responseText.replace(/```json\s*/g, '');
+                        responseText = responseText.replace(/```\s*/g, '');
+                        
+                        // Remove any leading/trailing whitespace
+                        responseText = responseText.trim();
+                        
+                        try {
+                            const improvedData = JSON.parse(responseText);
+                            
+                            // Validate the required fields
+                            if (typeof improvedData.response !== 'string' || typeof improvedData.score !== 'number') {
+                                throw new Error('Invalid response format');
+                            }
+                            
+                            saveSessionData(text, improvedData);
+                            displayImprovedText(improvedData);
+                            showSuccess('Speech processed successfully!');
+                        } catch (parseError) {
+                            console.error('JSON Parse Error:', parseError);
+                            console.log('Raw Response:', responseText);
+                            throw new Error('Failed to parse API response');
+                        }
+                    } else {
+                        throw new Error('Invalid API response format');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('Failed to process speech. Please try again.');
+                } finally {
+                    toggleLoadingState(false);
+                    status.innerText = 'Click the button to start speaking';
+                }
+            }
+
+            function displayImprovedText(improvedData) {
+                resp.innerHTML = `
+                    <p>${improvedData.response}</p>
+                    <p>Grammar Score: <span class="score" style="background-color: ${getScoreColor(improvedData.score)}">${improvedData.score}/10</span></p>
+                `;
+                speechContainer.style.display = 'block';
+            }
+            
+            function getScoreColor(score) {
+                if (score >= 8) return 'var(--success-color)';
+                if (score >= 6) return 'var(--warning-color)';
+                return 'var(--error-color)';
+            }
+        
+            function saveSessionData(text, improvedData) {
+                const currentUser = checkAuth();
+                if (!currentUser) return;
+
+                const sessions = JSON.parse(localStorage.getItem('speechSessions') || '[]');
+                
+                const sessionData = {
+                    date: new Date().toISOString(),
+                    originalText: text,
+                    improvedText: improvedData.response,
+                    score: improvedData.score,
+                    username: currentUser.username
+                };
+                
+                sessions.push(sessionData);
+                localStorage.setItem('speechSessions', JSON.stringify(sessions));
+            }
+
+            // Event Listeners
+            profileSection.addEventListener('click', toggleDropdown);
+            document.addEventListener('click', hideDropdown);
+            dropdownMenu.addEventListener('click', e => e.stopPropagation());
+
+            logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('currentUser');
+                localStorage.removeItem('speechSessions');
+                window.location.href = 'signin.html';
+            });
+
+            button.addEventListener('click', () => {
+                if (isRecording) {
+                    stopRecording();
+                } else {
+                    startRecording();
+                }
+            });
+
+            // Initialize the application
+            initializeUser();
+            initializeSpeechRecognition();
+        });
+    </script>
+</body>
+</html>
