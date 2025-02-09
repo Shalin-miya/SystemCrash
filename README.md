@@ -52,14 +52,17 @@ For Software:
 
 Landing-page
 
-![alt text](<WhatsApp Image 2025-02-09 at 10.03.21 AM (1)-1.jpeg>)
+ ![WhatsApp Image 2025-02-09 at 10 03 21 AM (1)-1](https://github.com/user-attachments/assets/5372068f-5a56-41fa-8058-0d89c988f828)
+
 Speech-recording page
 
-![alt text](<WhatsApp Image 2025-02-09 at 10.03.22 AM.jpeg>)
+ ![WhatsApp Image 2025-02-09 at 10 03 22 AM](https://github.com/user-attachments/assets/675cf3ee-78ef-4f5d-99df-4350b33bf3ba)
+
 Grading page
 
 # Diagrams
-![Workflow](<WhatsApp Image 2025-02-09 at 10.14.18 AM.jpeg>)
+ ![WhatsApp Image 2025-02-09 at 10 14 18 AM](https://github.com/user-attachments/assets/a4a3fb13-b9e0-4c23-95ec-585655be0ec4)
+
 *Add caption explaining your workflow*
 
 For Hardware:
@@ -72,7 +75,8 @@ For Hardware:
 *Add caption explaining the schematic*
 
 # Build Photos
-![Team](<WhatsApp Image 2025-02-09 at 6.10.37 AM.jpeg>)
+ ![WhatsApp Image 2025-02-09 at 6 10 37 AM](https://github.com/user-attachments/assets/64f0e6ee-1474-4f71-a3f5-2ffb096de023)
+
 
 
 ![Components](Add photo of your components here)
