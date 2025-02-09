@@ -48,7 +48,8 @@ landingpage.html
 For Software:
 
 # Screenshots (Add at least 3)
-![alt text](<WhatsApp Image 2025-02-09 at 10.03.21 AM-1.jpeg>)
+![WhatsApp Image 2025-02-09 at 10 03 21 AM](https://github.com/user-attachments/assets/ed9ac12b-411b-4cb9-a469-e73ee8ce1736)
+
 Landing-page
 
 ![alt text](<WhatsApp Image 2025-02-09 at 10.03.21 AM (1)-1.jpeg>)
