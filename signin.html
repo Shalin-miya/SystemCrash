@@ -52,7 +52,7 @@
     
                 <div style="text-align: center; margin-top: 20px; color: #fff;">
                     Don't have an account? 
-                    <a href="signup.html" style="color: #f4a261; text-decoration: none; margin-left: 5px; font-weight: bold;">Sign up</a>
+                    <a href="signup" style="color: #f4a261; text-decoration: none; margin-left: 5px; font-weight: bold;">Sign up</a>
                 </div>
             </form>
         </div>
@@ -104,7 +104,7 @@
                     errorMessage.style.display = 'none';
                     
                     // Redirect to speak page
-                    window.location.href = 'speakingpage.html';
+                    window.location.href = 'speakingpage';
                 } else {
                     // Show error message
                     errorMessage.textContent = 'Invalid username or password';
@@ -116,7 +116,7 @@
             window.onload = function() {
                 const currentUser = localStorage.getItem('currentUser');
                 if (currentUser) {
-                    window.location.href = 'speakingpage.html';
+                    window.location.href = 'speakingpage';
                 }
             }
         </script>
